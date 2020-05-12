@@ -8,7 +8,7 @@ public class Solution3 {
     public Solution3(){
         this.map = new HashMap<>();
         this.map.put(')','(');
-        this.map.put(']','[');  
+        this.map.put(']','[');
         this.map.put('}','{');
     }
 
