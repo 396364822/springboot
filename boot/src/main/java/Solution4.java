@@ -24,7 +24,7 @@ public class Solution4 {
         if(l1 == null){
             head.next = l2;
         }else if(l2 == null){
-            head.next = l1;;
+            head.next = l1;
         }
         return dom.next;
     }
