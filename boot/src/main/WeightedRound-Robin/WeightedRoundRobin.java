@@ -11,7 +11,7 @@ public class WeightedRoundRobin {
         maps.put("A",5);
         maps.put("B",1);
         maps.put("C",1);
-        totalWeight = 7;
+        totalWeight = 7;//权重总和
     }
 
     public String getServer(){
@@ -21,21 +21,24 @@ public class WeightedRoundRobin {
                 weightMaps.put(ip,new Weight(ip,weight,0));
             });
         }
+        //DynamicWeight = DynamicWeight + weight
         for(Weight weight : weightMaps.values()){
             weight.setDynamicWeight(weight.getWeight()+weight.getDynamicWeight());
         }
+        //选出max
         Weight max = null;
         for(Weight weight : weightMaps.values()){
             if(max == null || weight.getDynamicWeight()>max.getDynamicWeight())
                 max = weight;
         }
+        //max = DynamicWeight - totalWeight
         max.setDynamicWeight(max.getDynamicWeight()-totalWeight);
         return max.getIp();
     }
 
     public static void main(String[] args) {
         WeightedRoundRobin w = new WeightedRoundRobin();
-        for(int i=0; i<7; i++){
+        for(int i=0; i<2; i++){
             System.out.println(w.getServer());
         }
     }
